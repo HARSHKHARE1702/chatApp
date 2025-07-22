@@ -8,9 +8,10 @@ const publicDirectoryPath = path.join(__dirname,'../public')
 const socketio = require('Socket.io')
 const io = socketio(server)
 app.use(express.static(publicDirectoryPath))
-io.on('connection',()=>{
+let count = 0
+io.on('connection',(socket)=>{
 console.log('New websocket connection')
-  
+  socket.emit('countUpdated')
 })
 server.listen(port,()=>{
 console.log('Server is up and on port $(port)!)
