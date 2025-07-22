@@ -1,11 +1,18 @@
 const path = require('path')
+const http = require('http')
 const express = require("express")
 const app = express()
+const server = http.createServer(app)
 const port = process.env.PORT !! 3000
 const publicDirectoryPath = path.join(__dirname,'../public')
-
+const socketio = require('Socket.io')
+const io = socketio(server)
 app.use(express.static(publicDirectoryPath))
-app.listen(port,()=>{
+io.on('connection',()=>{
+console.log('New websocket connection')
+  
+})
+server.listen(port,()=>{
 console.log('Server is up and on port $(port)!)
 })
 
@@ -18,5 +25,6 @@ console.log('Server is up and on port $(port)!)
 -Listen on port 3000
 //3.Create index.html and render "Chat App" to the screen
 //4.Test Your Work! Start the Server and view the page in the browser.
-
+//to install socket.io we need to run command Npm i socket.io
+//above express server supports websockets
 
