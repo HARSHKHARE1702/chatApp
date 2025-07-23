@@ -12,6 +12,7 @@ let count = 0
 io.on('connection',(socket)=>{
 console.log('New websocket connection')
   socket.emit('countUpdated',count)
+  socket.broadcast.emit('message','A new user has Joined!')
   socket.on('Increment',()=>{
     count++
     socket.emit('countUpdated',count)
@@ -19,6 +20,10 @@ console.log('New websocket connection')
       count++
       io.emit('countUpdated',count)
 })
+    socket.on('disconnect',()=>{
+    io.emit('message','A user has left!')
+    })
+    }
 server.listen(port,()=>{
 console.log('Server is up and on port $(port)!)
 })
