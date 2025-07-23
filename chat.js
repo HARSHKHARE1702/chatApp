@@ -20,3 +20,15 @@ document.queryselector('#increment').addEventListner('click',()=>{
 console.log('Clicked')
   socket.emit('increment')
 })
+  document.querySelector('#send-location').addEventListner('click',()=>{
+if(!navigator.geolocation){
+return alert('Geolocation is not supported by your browser.')
+}
+    navigator.geolocation.getCurrentPosition((position)=>{
+      console.log(position)
+      socket.emit('sendLocation',{
+        latitude:position.cords.latitude,
+        longitude:position.coords.longitude,
+      }
+  })
+  })
