@@ -7,7 +7,7 @@ document.querySelector('#message-form').addEventListener('submit',(e)=>{
   e.preventDefault()
   const message = document.querySelector('input').value
   socket.email('sendMessage',message)
-  socket.on('sendMessage',(message)=>{
+  socket.on('sendMessage',(message,callback)=>{
     io.emit('message',message)
     const message = e.target.elements.message.value
     socket.email('sendMessage',message)
