@@ -4,6 +4,7 @@ const $messageForm = document.querySelector('#message-form')
 const $messageFormInput = $messageForm.querySelector('input')
 const $messageFormButton = $messageForm.querySelector('button')
 const $sendLocationButton = document.querySelector('#send-location')
+const $messages = document.querySelector('#')
 
 
 socket.on('message',(message)=>{
@@ -48,6 +49,9 @@ return alert('Geolocation is not supported by your browser.')
       socket.emit('sendLocation',{
         latitude:position.cords.latitude,
         longitude:position.coords.longitude,
-      }
+      },()=>{
+        sendLocationButton.removeAttribute()
+        console.log('Location shared!')
+      })
   })
   })
