@@ -43,6 +43,15 @@ socket.emit('message',{
   socket.emit('message',generateMessage('welcome'))
     socket.broadcast.emit('message','A new user has Joined')
 
+      socket.on('message',(message)=>{
+        console.log(message)
+          const html = mustache.render(messageTemplate,{
+            message: message.text,
+            CreatedAt: moment(message.createdAt).format()
+          })
+            
+              
+
 //Goal:Create an Express web server
 //1.Intialize npm and install Express
 //2.Setup a New Express Server 
