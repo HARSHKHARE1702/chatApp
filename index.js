@@ -7,6 +7,10 @@ const port = process.env.PORT !! 3000
 const publicDirectoryPath = path.join(__dirname,'../public')
 const socketio = require('Socket.io')
 const io = socketio(server)
+const Filter = require('bad-words')
+require('')
+const {generateMessage} = require('./utils/messages')
+
 app.use(express.static(publicDirectoryPath))
 let count = 0
 io.on('connection',(socket)=>{
@@ -36,6 +40,8 @@ socket.emit('message',{
   text:'Welcome!'
   createdAt:new Date().getTime()
 })
+  socket.emit('message',generateMessage('welcome'))
+    socket.broadcast.emit('message','A new user has Joined')
 
 //Goal:Create an Express web server
 //1.Intialize npm and install Express
