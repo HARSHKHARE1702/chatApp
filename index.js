@@ -32,7 +32,10 @@ server.listen(port,()=>{
 console.log('Server is up and on port $(port)!)
 })
 
-
+socket.emit('message',{
+  text:'Welcome!'
+  createdAt:new Date().getTime()
+})
 
 //Goal:Create an Express web server
 //1.Intialize npm and install Express
