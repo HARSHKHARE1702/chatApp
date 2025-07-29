@@ -8,7 +8,11 @@ const $messages = document.querySelector('#messages-template').innerHTML
 
 
 //Templates
-const messageTemplate = document.querySelector('#')
+const messageTemplate = document.querySelector('#message-template').innerHTML
+const locationMessageTemplate = document.querySelector('#location-message-template').innerHTML
+
+socket.on('locationMessage',(url)=>{
+  
 
 
 
