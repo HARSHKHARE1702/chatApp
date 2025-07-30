@@ -42,7 +42,12 @@ socket.emit('message',{
 })
   socket.emit('message',generateMessage('welcome'))
     socket.broadcast.emit('message','A new user has Joined')
+socket.on('join',({username,room})=>{
+socket.join(room)
 
+  socket.emit('message',generateMessage('Welcome!'))
+  socket.broadcast.to(room).emit('message',generateMessage('${username} has joined!')}
+})
       socket.on('message',(message)=>{
         console.log(message)
           const html = mustache.render(messageTemplate,{
