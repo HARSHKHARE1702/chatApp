@@ -9,7 +9,7 @@ const socketio = require('Socket.io')
 const io = socketio(server)
 const Filter = require('bad-words')
 require('')
-const {generateMessage} = require('./utils/messages')
+const {generateMessage,generateLocationMessage} = require('./utils/messages')
 
 app.use(express.static(publicDirectoryPath))
 let count = 0
