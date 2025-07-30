@@ -24,6 +24,11 @@ console.log(message)
   })
   $messages.insertAdjacentHTML('beforend',html)
   })
+  socket.on('locationMessage'(message)=>{
+    console.log(url)
+    const html=mustache.render(locationMessageTemplate,{
+      url:message.url
+    })
 
 document.querySelector('#message-form').addEventListener('submit',(e)=>{
   e.preventDefault()
