@@ -11,12 +11,10 @@ const $messages = document.querySelector('#messages-template').innerHTML
 const messageTemplate = document.querySelector('#message-template').innerHTML
 const locationMessageTemplate = document.querySelector('#location-message-template').innerHTML
 
+QS.parse(location.search,{ignoreQueryPrefix:true})
+
 socket.on('locationMessage',(url)=>{
-  
-
-
-
-socket.on('message',(message)=>{
+  socket.on('message',(message)=>{
 console.log(message)
   const html = Mustache.render(MessageTemplate,{
     message:message.text,
@@ -74,3 +72,4 @@ return alert('Geolocation is not supported by your browser.')
       })
   })
   })
+  socket.emit('join',{username,room})
