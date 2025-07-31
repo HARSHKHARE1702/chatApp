@@ -31,7 +31,13 @@ const index = users.findIndex((user))=> user.id===id){
 if(index !== -1) {
  return  users.splice(index,1)[0]
 }
-})
+}
+const getUser = (id) =>{
+  return users.find((user)=> user.id === id)
+}
+const getUserInRoom =(room) =>{
+  return users.filter((user) =>user.room===room{
+    
 }  
 addUser({
   id:22
@@ -39,6 +45,11 @@ addUser({
   room:'South Philly'
 })
 console.log(users)
+addUser({
+  id:42
+  username:'Mike',
+  room:'South Philly'
+})
 
 const res = addUser({
   id:33,
@@ -48,6 +59,9 @@ const res = addUser({
 console.log(res)
 const reomovedUser = removedUser(22)
 console.log(removedUser)
+console.log(user)
+
+const user = getUser(421)
 console.log(user)
 
 
