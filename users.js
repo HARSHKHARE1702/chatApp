@@ -36,6 +36,7 @@ const getUser = (id) =>{
   return users.find((user)=> user.id === id)
 }
 const getUserInRoom =(room) =>{
+  room=room.trim().toLowerCase()
   return users.filter((user) =>user.room===room{
     
 }  
@@ -63,5 +64,11 @@ console.log(user)
 
 const user = getUser(421)
 console.log(user)
-
-
+const userList = getUsersInRoom('South Philly')
+console.log(userList)
+module.exports={
+  addUser,
+  removeUser,
+  getUser,
+  getUsersInRoom,
+}
