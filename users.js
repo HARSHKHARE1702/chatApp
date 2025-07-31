@@ -26,3 +26,28 @@ const addUser = ({id,username,room }) =>{
   users.push(user)
   return { user}
 }
+const removeUser = (id)=>{
+const index = users.findIndex((user))=> user.id===id){
+if(index !== -1) {
+ return  users.splice(index,1)[0]
+}
+})
+}  
+addUser({
+  id:22
+  username:'Andrew',
+  room:'South Philly'
+})
+console.log(users)
+
+const res = addUser({
+  id:33,
+  username:''
+  room: ''
+})
+console.log(res)
+const reomovedUser = removedUser(22)
+console.log(removedUser)
+console.log(user)
+
+
