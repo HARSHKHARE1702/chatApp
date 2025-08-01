@@ -30,7 +30,11 @@ console.log('New websocket connection')
     })
     
     socket.on('disconnect',()=>{
-    io.emit('message','A user has left!')
+    const user = removeUser(socket.id)
+      if(user){
+      io.to(user.room).emit('message',generateMessage('$(User.username) has left!')
+      }
+    })
     })
     }
 server.listen(port,()=>{
@@ -43,14 +47,15 @@ socket.emit('message',{
 })
   socket.emit('message',generateMessage('welcome'))
     socket.broadcast.emit('message','A new user has Joined')
-socket.on('join',({username,room})=>{
+socket.on('join',({username,room},callback)=>{
   const {error,user}=addUser({id:socket.id,username,room})
   if(error){
-  
+  return callback(error)
   }
-socket.join(room)
+socket.join(user.room)
   socket.emit('message',generateMessage('Welcome!'))
-  socket.broadcast.to(room).emit('message',generateMessage('${username} has joined!')}
+  socket.broadcast.to(user.room).emit('message',generateMessage('${user.username} has joined!')}
+          callback()
 })
       socket.on('message',(message)=>{
         console.log(message)
