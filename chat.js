@@ -73,5 +73,8 @@ return alert('Geolocation is not supported by your browser.')
   })
   })
   socket.emit('join',{username,room},(room)=>{
-
+if(error){
+alert(error)
+  location.href='/'
+}
   })
