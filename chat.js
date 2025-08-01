@@ -72,4 +72,6 @@ return alert('Geolocation is not supported by your browser.')
       })
   })
   })
-  socket.emit('join',{username,room})
+  socket.emit('join',{username,room},(room)=>{
+
+  })
