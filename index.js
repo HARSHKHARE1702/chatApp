@@ -75,4 +75,4 @@ socket.join(user.room)
 //4.Test Your Work! Start the Server and view the page in the browser.
 //to install socket.io we need to run command Npm i socket.io
 //above express server supports websockets
-
+//to start your chatapp you need to run Npm run dev
