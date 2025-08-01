@@ -8,6 +8,7 @@ const publicDirectoryPath = path.join(__dirname,'../public')
 const socketio = require('Socket.io')
 const io = socketio(server)
 const Filter = require('bad-words')
+const { addUser,getUser,removeUser,getUsersInRooms} = require('./utils/')
 require('')
 const {generateMessage,generateLocationMessage} = require('./utils/messages')
 
@@ -43,8 +44,11 @@ socket.emit('message',{
   socket.emit('message',generateMessage('welcome'))
     socket.broadcast.emit('message','A new user has Joined')
 socket.on('join',({username,room})=>{
+  const {error,user}=addUser({id:socket.id,username,room})
+  if(error){
+  
+  }
 socket.join(room)
-
   socket.emit('message',generateMessage('Welcome!'))
   socket.broadcast.to(room).emit('message',generateMessage('${username} has joined!')}
 })
