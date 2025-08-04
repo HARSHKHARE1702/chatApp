@@ -86,8 +86,13 @@ socket.join(user.room)
     console.log(message)
   const html=Mustache.render(locationMessageTemplate,{
     username:message.username,
-    
-      
+socket.on('disconnect',()=>{
+  const user = removeUser(socket.id)
+    if(User){
+      io.to(user.room).emit('message',generateMessage('admin','$(user.username) has left!')
+                            }
+})
+                             
               
 
 //Goal:Create an Express web server
