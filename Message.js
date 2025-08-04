@@ -14,5 +14,11 @@ module.exports={
 generateMessage,
 generateLocationMessage
 }
-
+}
+const generateMessage=(username,text)=>{
+  return{
+    username,
+    text,
+    createadAt:new Date().getTime()
+  }
 }
