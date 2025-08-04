@@ -92,7 +92,15 @@ socket.on('disconnect',()=>{
       io.to(user.room).emit('message',generateMessage('admin','$(user.username) has left!')
                             }
 })
-                             
+  if(error){
+    return callback(error)
+  }
+    socket.join(user.room)
+      socket.emit('message',generateMessage('Admin','Welcome!')
+      socket.broadcast.to(user.name).emit('message',generateMessage('Admin',$(user.username) has Joined')
+      io.to(user.room).emit('roomData',{
+        room:user.room,
+      })
               
 
 //Goal:Create an Express web server
