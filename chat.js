@@ -10,6 +10,9 @@ const $messages = document.querySelector('#messages-template').innerHTML
 //Templates
 const messageTemplate = document.querySelector('#message-template').innerHTML
 const locationMessageTemplate = document.querySelector('#location-message-template').innerHTML
+//Options
+const autoscroll = ()=>{
+}
 
 QS.parse(location.search,{ignoreQueryPrefix:true})
 
@@ -21,12 +24,16 @@ console.log(message)
     createdAt:moment(message.createdAt).format('h:mn a')
   })
   $messages.insertAdjacentHTML('beforend',html)
+  autoscroll()
   })
   socket.on('locationMessage'(message)=>{
     console.log(url)
     const html=mustache.render(locationMessageTemplate,{
       url:message.url
     })
+    $message.insertAdjacentHTML('beforend',html)
+    autoscroll()
+    
 
 document.querySelector('#message-form').addEventListener('submit',(e)=>{
   e.preventDefault()
@@ -38,7 +45,8 @@ document.querySelector('#message-form').addEventListener('submit',(e)=>{
     socket.email('sendMessage',message)
 })
 $messageForm.addEventListner('submit',(e)=>{
-e.preventDefault()
+
+  e.preventDefault()
   $messageFormButton.setAttribute('disabled','disabled')
   const message=e.target.elements.message.value
   socket.emit('sendMessage',message,(error)=>{
