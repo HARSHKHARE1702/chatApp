@@ -37,8 +37,11 @@ console.log(message)
  //Height of the new Messages
     const newMessageStyles = getComputedStyle($newMessage)
     const newMessageMargin = parseInt(newMessageStyles.marginBottom)
-    const newMessageHeight = $newMessage.offsetHeight
-
+    const newMessageHeight = $newMessage.offsetHeight+newMessageMargin
+//Visible Height
+    const VisibleHeight = $messages.offsetHeights
+//Height of the Message Container
+    const ContainerHeight = $messages.scrollHeights
 document.querySelector('#message-form').addEventListener('submit',(e)=>{
   e.preventDefault()
   const message = document.querySelector('input').value
