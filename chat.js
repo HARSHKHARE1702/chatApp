@@ -34,7 +34,10 @@ console.log(message)
     })
     $message.insertAdjacentHTML('beforend',html)
     autoscroll()
-    
+ //Height of the new Messages
+    const newMessageStyles = getComputedStyle($newMessage)
+    const newMessageMargin = parseInt(newMessageStyles.marginBottom)
+    const newMessageHeight = $newMessage.offsetHeight
 
 document.querySelector('#message-form').addEventListener('submit',(e)=>{
   e.preventDefault()
