@@ -63,7 +63,31 @@ socket.join(user.room)
             message: message.text,
             CreatedAt: moment(message.createdAt).format()
           })
-            
+        //Goal:Send Messages to correct room
+        //1.Use getUser Inside "SendMessage" event Handler to get User Data
+        //2.Emit the Message to their current room
+        //3.Test Your Work
+        //4.Repeat for "SendLocation"
+
+  socket.on("SendMessage",(message,callback)=>{
+    const filter = new Filter()
+    if(filter.toProfane(message)){
+      return callback("Profanity is not allowed")
+    }
+    io.to(user.room).emit('message',generateMessage(message))
+      callback()
+  })
+    socket.on('sendLocation',(coords,callback)=>{
+      const user = getUser(socket.id)
+      io.to(user.room).emit('locationMessage',generateLocationMessage("")
+      callback()
+    })
+  socket.on('message',(message)=>{
+    console.log(message)
+  const html=Mustache.render(locationMessageTemplate,{
+    username:message.username,
+    
+      
               
 
 //Goal:Create an Express web server
