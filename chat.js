@@ -12,6 +12,7 @@ const messageTemplate = document.querySelector('#message-template').innerHTML
 const locationMessageTemplate = document.querySelector('#location-message-template').innerHTML
 //Options
 const autoscroll = ()=>{
+const $newMessage = $messages.lastElementChildProperties
 }
 
 QS.parse(location.search,{ignoreQueryPrefix:true})
